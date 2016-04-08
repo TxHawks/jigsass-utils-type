@@ -1,0 +1,369 @@
+/* ---
+section: u-type
+title: Introduction
+order: -10
+---
+
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
+
+A dynamically generated set of typesetting utility classes, in charge of modifying
+an element's font-size and line-height, based on sizes defined in the
+[$jigsass-sizes](https://txhawks.github.io/jigsass-tools-typography/#variable-jigsass-sizes)
+variable.
+
+#### Installation
+
+Using npm:
+
+```sh
+npm i -S jigsass-utils-type
+```
+
+#### Usage
+Import JigSass Utils Type into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).
+
+```scss
+@import 'path/to/jigsass-utils-type/scss/index';
+```
+
+Like all other JigSass Utils, JigSass Type does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual typesetting
+class should actually be generated in each component or object it is used in:
+
+```scss
+// _c.foo.scss
+.foo {
+  @include jigsass-util(u-type, $modifier: alpha);
+
+  ...
+}
+```
+
+```scss
+// _c.bar.scss
+.bar {
+  @include jigsass-util(u-type, $modifier: epsilon);
+  @include jigsass-util(u-type, $modifier: delta, $from: large);
+
+  ...
+}
+```
+
+Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man's dependency
+management.
+
+Developer communication is also assisted by including "dependencies" wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.
+
+As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Clearfix partial was imported into the main file.
+
+
+
+JigSass Type classes are responsive-enabled, using [JigSass MQ](https://txhawks.github.io/jigsass-tools-mq/)
+and the breakpoints defined in the [$jigsass-breakpoints](https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints) variable.
+
+Based on the breakpoint arguments passed to `jigsass-util` when including a type class, responsive
+modifiers are generated according to the following logic:
+
+```scss
+.u-type--modifier[-[-from-{breakpoint-name}][-until-{breakpoint-name}][-misc-{breakpoint-name}]]
+```
+
+So, assuming the `medium`, `large` and `landscape` breakpoints are defined in `$jigsass-breakpoints`
+as `600px`, `1024px` and `(orientation: landscape)` respectively,
+
+```scss
+@include jigsass-util(u-type, $modifier: zeta);
+```
+will generate the `.u-type--zeta` class, which is not limited to any media-query.
+
+```scss
+@include jigsass-util(u-type, $modifier: zeta, $until: medium);
+```
+
+will generate the `.u-type--zeta--until-medium` class, which will be in effect at
+`(max-width: 37.49em)` and will override styles in the default class until that point.
+
+```scss
+@include jigsass-util(u-type, $modifier: zeta, $from: large, $misc: landscape);
+```
+
+will generate the `.u-type--zeta--from-large-when-landscape` class, which will go into
+effect at `(min-width: 64em) and (orientation: landscape)` and will override styles in the default
+class under these  conditions.
+
+
+**License:** MIT
+
+
+
+[npm-image]: https://badge.fury.io/js/jigsass-utils-type.svg
+[npm-url]: https://npmjs.org/package/jigsass-utils-type
+
+[daviddm-image]: https://david-dm.org/TxHawks/jigsass-utils-type.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/TxHawks/jigsass-utils-type
+*/
+.u-type--zeta {
+  font-size: 2.6666666667rem;
+  line-height: 4rem;
+  /* ---
+section: u-type
+title: zeta
+order: 1
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.zeta` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: zeta[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--zeta'>
+  This is <em>zeta</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--zeta {
+    font-size: 2.5714285714rem;
+    line-height: 4rem;
+  }
+}
+
+.u-type--epsilon {
+  font-size: 3rem;
+  line-height: 4rem;
+  /* ---
+section: u-type
+title: epsilon
+order: 2
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.epsilon` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: epsilon[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--epsilon'>
+  This is <em>epsilon</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--epsilon {
+    font-size: 2.8571428571rem;
+    line-height: 4rem;
+  }
+}
+
+.u-type--delta {
+  font-size: 3.3333333333rem;
+  line-height: 4rem;
+  /* ---
+section: u-type
+title: delta
+order: 3
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.delta` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: delta[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--delta'>
+  This is <em>delta</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--delta {
+    font-size: 3.2857142857rem;
+    line-height: 4rem;
+  }
+}
+
+.u-type--gamma {
+  font-size: 3.8333333333rem;
+  line-height: 5rem;
+  /* ---
+section: u-type
+title: gamma
+order: 4
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.gamma` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: gamma[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--gamma'>
+  This is <em>gamma</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--gamma {
+    font-size: 3.7142857143rem;
+    line-height: 5rem;
+  }
+}
+
+.u-type--beta {
+  font-size: 4.3333333333rem;
+  line-height: 5rem;
+  /* ---
+section: u-type
+title: beta
+order: 5
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.beta` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: beta[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--beta'>
+  This is <em>beta</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--beta {
+    font-size: 4.1428571429rem;
+    line-height: 5rem;
+  }
+}
+
+.u-type--alpha {
+  font-size: 4.8333333333rem;
+  line-height: 6rem;
+  /* ---
+section: u-type
+title: alpha
+order: 6
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.alpha` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: alpha[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--alpha'>
+  This is <em>alpha</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--alpha {
+    font-size: 4.5714285714rem;
+    line-height: 6rem;
+  }
+}
+
+html {
+  font-size: 37.5%;
+}
+
+@media (min-width: 64em) {
+  html {
+    font-size: 43.75%;
+  }
+}
+
+body {
+  font-size: 2.6666666667em;
+  line-height: 4rem;
+}
+
+@media (min-width: 64em) {
+  body {
+    font-size: 2.5714285714em;
+  }
+}
+
+html {
+  font-family: sans-serif;
+}
+
+figure,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.u-as--4 > * + * {
+  margin-top: 4rem;
+}
+
+.u-mb--4 {
+  margin-bottom: 4rem;
+}
+
+.u-mt--4 {
+  margin-top: 4rem;
+}
