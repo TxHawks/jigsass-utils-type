@@ -1,0 +1,264 @@
+<!doctype html>
+<title>jigsass-utils-type</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="style.css?05" rel="stylesheet">
+<link href="jigsass-logo.png" rel="shortcut icon">
+<script type="text/javascript">WebFontConfig={google:{families:["Roboto:400,100,300,500:latin"]}},function(){var e=document.createElement("script");e.src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js",e.type="text/javascript",e.async="true";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();</script>
+<script>examples={"base":"","target":"_self","css":["assets/sg.css"],"js":[],"bodyjs":[],"htmlcss":"background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:0;position:static;width:auto","bodycss":"background:none;border:0;clip:auto;display:block;height:auto;margin:0;padding:0;position:static;width:auto"};</script>
+
+<header>
+	<nav>
+		<img src="jigsass-logo.png" alt="jigsass-utils-type">
+		
+	<ul>
+		
+				<li>
+					<a href="#u-type"><span>u-type</span></a>
+					
+	<ul>
+		
+				<li>
+					<a href="#introduction"><span>Introduction</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#zeta"><span>zeta</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#epsilon"><span>epsilon</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#delta"><span>delta</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#gamma"><span>gamma</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#beta"><span>beta</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#alpha"><span>alpha</span></a>
+					
+				</li>
+				
+	</ul>
+	
+				</li>
+				
+	</ul>
+	
+	</nav>
+</header>
+
+<main>
+	
+		<section id="u-type">
+			<h2>u-type</h2>
+			<div>
+				
+				
+		<section id="introduction">
+			<h3>Introduction</h3>
+			<div>
+				<p><a href="https://npmjs.org/package/jigsass-utils-type"><img src="https://badge.fury.io/js/jigsass-utils-type.svg" alt="NPM version"></a>
+<a href="https://david-dm.org/TxHawks/jigsass-utils-type"><img src="https://david-dm.org/TxHawks/jigsass-utils-type.svg?theme=shields.io" alt="Dependency Status"></a></p>
+<p>A dynamically generated set of typesetting utility classes, in charge of modifying
+an element&#39;s font-size and line-height, based on sizes defined in the
+<a href="https://txhawks.github.io/jigsass-tools-typography/#variable-jigsass-sizes">$jigsass-sizes</a>
+variable.</p>
+<h4 id="installation">Installation</h4>
+<p>Using npm:</p>
+<pre><code class="lang-sh">npm i -S jigsass-utils-type
+</code></pre>
+<h4 id="usage">Usage</h4>
+<p>Import JigSass Utils Type into your main scss file near its very end, together with all
+other utilities (utilities should always be the last to be imported).</p>
+<pre><code class="lang-scss">@import &#39;path/to/jigsass-utils-type/scss/index&#39;;
+</code></pre>
+<p>Like all other JigSass Utils, JigSass Type does not automatically generate any CSS
+when imported. You would need to explicitly indicate that each individual typesetting
+class should actually be generated in each component or object it is used in:</p>
+<pre><code class="lang-scss">// _c.foo.scss
+.foo {
+  @include jigsass-util(u-type, $modifier: alpha);
+
+  ...
+}
+</code></pre>
+<pre><code class="lang-scss">// _c.bar.scss
+.bar {
+  @include jigsass-util(u-type, $modifier: epsilon);
+  @include jigsass-util(u-type, $modifier: delta, $from: large);
+
+  ...
+}
+</code></pre>
+<p>Doing so helps us a great deal with portability, as no matter where we import component or object
+partials, the correct utility classes will be generated. Think of it as a poor man&#39;s dependency
+management.</p>
+<p>Developer communication is also assisted by including &quot;dependencies&quot; wherever they are required,
+as anyone going through a partial, can easily understand how it should be marked up with just a
+glance.</p>
+<p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
+at the location in the cascade where the Jigsass Clearfix partial was imported into the main file.</p>
+<p>JigSass Type classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
+and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
+<p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a type class, responsive
+modifiers are generated according to the following logic:</p>
+<pre><code class="lang-scss">.u-type--modifier[-[-from-{breakpoint-name}][-until-{breakpoint-name}][-misc-{breakpoint-name}]]
+</code></pre>
+<p>So, assuming the <code>medium</code>, <code>large</code> and <code>landscape</code> breakpoints are defined in <code>$jigsass-breakpoints</code>
+as <code>600px</code>, <code>1024px</code> and <code>(orientation: landscape)</code> respectively,</p>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: zeta);
+</code></pre>
+<p>will generate the <code>.u-type--zeta</code> class, which is not limited to any media-query.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: zeta, $until: medium);
+</code></pre>
+<p>will generate the <code>.u-type--zeta--until-medium</code> class, which will be in effect at
+<code>(max-width: 37.49em)</code> and will override styles in the default class until that point.</p>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: zeta, $from: large, $misc: landscape);
+</code></pre>
+<p>will generate the <code>.u-type--zeta--from-large-when-landscape</code> class, which will go into
+effect at <code>(min-width: 64em) and (orientation: landscape)</code> and will override styles in the default
+class under these  conditions.</p>
+<p><strong>License:</strong> MIT</p>
+
+				
+			</div>
+		</section>
+		
+		<section id="zeta">
+			<h3>zeta</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.zeta</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: zeta[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--zeta&#39;&gt;
+  This is &lt;em&gt;zeta&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="epsilon">
+			<h3>epsilon</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.epsilon</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: epsilon[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--epsilon&#39;&gt;
+  This is &lt;em&gt;epsilon&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="delta">
+			<h3>delta</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.delta</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: delta[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--delta&#39;&gt;
+  This is &lt;em&gt;delta&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="gamma">
+			<h3>gamma</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.gamma</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: gamma[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--gamma&#39;&gt;
+  This is &lt;em&gt;gamma&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="beta">
+			<h3>beta</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.beta</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: beta[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--beta&#39;&gt;
+  This is &lt;em&gt;beta&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="alpha">
+			<h3>alpha</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.alpha</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: alpha[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--alpha&#39;&gt;
+  This is &lt;em&gt;alpha&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+	<footer>Last modified Saturday, 9 April 2016 0:18</footer>
+</main>
+<script src="prism.js"></script>
+<script src="examples.js"></script>
+<script src="script.js"></script>
+
