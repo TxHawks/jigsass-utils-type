@@ -30,7 +30,7 @@
 
 // stylelint-disable
 /* ---
-section: u-type
+section: Type Utils
 title: Introduction
 order: -10
 ---
@@ -42,6 +42,21 @@ A dynamically generated set of typesetting utility classes, in charge of modifyi
 an element's font-size and line-height, based on sizes defined in the
 [$jigsass-sizes](https://txhawks.github.io/jigsass-tools-typography/#variable-jigsass-sizes)
 variable.
+
+Additionally, JigSass Type provides utility classes for setting an element's
+`font-weight`, `font-style` and `font-family` stacks through the
+`$jigsass-font-stacks` variable.
+
+#### Available classes
+
+  - `u-type--<named-size>` (example: .u-type--alpha)
+  - `u-fw--<weight>` (example: .u-fw--700)
+  - `u-fs--i` (italic)
+  - `u-fs--n` (normal)
+  - `u-fs--o` (oblique)
+  - `u-ff--<stack>` (example: .u-ff--serif)
+
+
 
 #### Installation
 
@@ -91,7 +106,7 @@ as anyone going through a partial, can easily understand how it should be marked
 glance.
 
 As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
-at the location in the cascade where the Jigsass Clearfix partial was imported into the main file.
+at the location in the cascade where the Jigsass Type partial was imported into the main file.
 
 
 
@@ -148,6 +163,43 @@ class under these  conditions.
 // -------------------------------------
 // Variables
 // -------------------------------------
+
+// stylelint-disable
+/* ---
+section: Type Utils
+title: Configuration
+order: 0
+---
+
+JigSass Utils Type can be tweaked by setting the values of the following
+configuration variables. To override the default values, set your own
+_before_ importing JigSass Utils Type.
+
+#### Font family stacks
+
+```scss
+$jigsass-font-stacks
+```
+
+**Type:** `Map`
+
+A map holding named lists of font-family stacks for use as font-family modfiers:
+```scss
+@include jigsass-util(u-ff, $modifier: serif);
+```
+
+**Default:** `()`
+*/
+//stylelint-enable
+/// A map holding named lists of font-family stacks.
+/// ---
+/// @type Map
+/// ---
+$jigsass-font-stacks: () !default;
+
+
+// Used internally for generating font-style classes.
+$_jigsass-fs-val: ( i: italic, n: normal, o: oblique);
 
 // Used internally to store doclets
 $_doclet-store: () !default;
@@ -218,8 +270,8 @@ $_jigsass-util-type-i: 1;
       $_doclet-store: append($_doclet-store, $_doclet) !global;
       // stylelint-disable
 /* ---
-section: u-type
-title: #{$jigsass-util-modifier}
+section: Type Utils
+title: Font Size #{$jigsass-util-modifier}
 order: #{$_jigsass-util-type-i}
 ---
 A util to modify an element's font size to the that set in
@@ -247,5 +299,136 @@ accordingly.
   @else {
     @warn 'jigsass-util-type: Could not find a size definition for ' +
       '#{$jigsass-util-modifier}. No class will be generated.';
+  }
+}
+
+
+
+@include jigsass-define-util(u-fs) {
+  @if (not $jigsass-util-modifier) {
+    @error '#{$jigsass-util-name} must be passed a font-style modifier.';
+  }
+  @if (not index(i n o, $jigsass-util-modifier)) {
+    @error '#{$jigsass-util-name} modifiers may only be `i` for italics, `n` for normal ' +
+      'or `o` fro oblique. You are trying to pass #{$jigsass-util-modifier}.';
+  }
+
+  font-style: map-get($_jigsass-fs-val, $jigsass-util-modifier);
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: Type Utils
+title: Font Style: #{map-get($_jigsass-fs-val, $jigsass-util-modifier)}
+order: #{$_jigsass-util-type-i}
+---
+A util class for setting an element's font-style to #{map-get($_jigsass-fs-val, $jigsass-util-modifier)}
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier}[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=#{$jigsass-util-name}--#{$jigsass-util-modifier}>
+  This element's font-style is set to <code>#{map-get($_jigsass-fs-val, $jigsass-util-modifier)}</code>.
+</p>
+```
+
+*/
+    // stylelint-enable
+    $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+  }
+}
+
+
+@include jigsass-define-util(u-fw) {
+  @if (not $jigsass-util-modifier) {
+    @error '#{$jigsass-util-name} must be passed a font-weight modifier.';
+  }
+
+  font-style: $jigsass-util-modifier;
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: Type Utils
+title: Font Weight: #{$jigsass-util-modifier}
+order: #{$_jigsass-util-type-i}
+---
+A util class for setting an element's font-weight to #{$jigsass-util-modifier}
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier}[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=#{$jigsass-util-name}--#{$jigsass-util-modifier}>
+  This element's font-weight is set to <code>#{$jigsass-util-modifier}</code>.
+</p>
+```
+
+*/
+    // stylelint-enable
+    $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+  }
+}
+
+
+@include jigsass-define-util(u-ff) {
+  @if (not $jigsass-util-modifier) {
+    @error '#{$jigsass-util-name} must be passed a font-faimly stack as a modifier.';
+  }
+
+  $stack: map-get($jigsass-font-stacks, $jigsass-util-modifier);
+
+  @if (not $stack) {
+    @error 'u-ff: A `#{$jigsass-util-modifier}` stack is not defined in `$jigsass-font-stacks`.';
+  }
+
+  font-family: $stack;
+
+  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+  @if (not index($_doclet-store, $_doclet)) {
+    $_doclet-store: append($_doclet-store, $_doclet) !global;
+    // stylelint-disable
+
+/* ---
+section: Type Utils
+title: Font family: #{$jigsass-util-modifier}
+order: #{$_jigsass-util-type-i}
+---
+A util class for setting an element's font-familly to the #{$jigsass-util-modifier} named stack
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier}[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=#{$jigsass-util-name}--#{$jigsass-util-modifier}>
+  This element's font-family is set to the <code>#{$jigsass-util-modifier}</code> stack.
+</p>
+```
+
+*/
+    // stylelint-enable
+    $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
   }
 }

@@ -1,5 +1,5 @@
 /* ---
-section: u-type
+section: Type Utils
 title: Introduction
 order: -10
 ---
@@ -11,6 +11,21 @@ A dynamically generated set of typesetting utility classes, in charge of modifyi
 an element's font-size and line-height, based on sizes defined in the
 [$jigsass-sizes](https://txhawks.github.io/jigsass-tools-typography/#variable-jigsass-sizes)
 variable.
+
+Additionally, JigSass Type provides utility classes for setting an element's
+`font-weight`, `font-style` and `font-family` stacks through the
+`$jigsass-font-stacks` variable.
+
+#### Available classes
+
+  - `u-type--<named-size>` (example: .u-type--alpha)
+  - `u-fw--<weight>` (example: .u-fw--700)
+  - `u-fs--i` (italic)
+  - `u-fs--n` (normal)
+  - `u-fs--o` (oblique)
+  - `u-ff--<stack>` (example: .u-ff--serif)
+
+
 
 #### Installation
 
@@ -60,7 +75,7 @@ as anyone going through a partial, can easily understand how it should be marked
 glance.
 
 As far as bloat goes, just don't worry about it - the actual styles will only be generated once,
-at the location in the cascade where the Jigsass Clearfix partial was imported into the main file.
+at the location in the cascade where the Jigsass Type partial was imported into the main file.
 
 
 
@@ -108,12 +123,37 @@ class under these  conditions.
 [daviddm-image]: https://david-dm.org/TxHawks/jigsass-utils-type.svg?theme=shields.io
 [daviddm-url]: https://david-dm.org/TxHawks/jigsass-utils-type
 */
+/* ---
+section: Type Utils
+title: Configuration
+order: 0
+---
+
+JigSass Utils Type can be tweaked by setting the values of the following
+configuration variables. To override the default values, set your own
+_before_ importing JigSass Utils Type.
+
+#### Font family stacks
+
+```scss
+$jigsass-font-stacks
+```
+
+**Type:** `Map`
+
+A map holding named lists of font-family stacks for use as font-family modfiers:
+```scss
+@include jigsass-util(u-ff, $modifier: serif);
+```
+
+**Default:** `()`
+*/
 .u-type--zeta {
   font-size: 2.6666666667rem;
   line-height: 4rem;
   /* ---
-section: u-type
-title: zeta
+section: Type Utils
+title: Font Size zeta
 order: 1
 ---
 A util to modify an element's font size to the that set in
@@ -147,8 +187,8 @@ accordingly.
   font-size: 3rem;
   line-height: 4rem;
   /* ---
-section: u-type
-title: epsilon
+section: Type Utils
+title: Font Size epsilon
 order: 2
 ---
 A util to modify an element's font size to the that set in
@@ -182,8 +222,8 @@ accordingly.
   font-size: 3.3333333333rem;
   line-height: 4rem;
   /* ---
-section: u-type
-title: delta
+section: Type Utils
+title: Font Size delta
 order: 3
 ---
 A util to modify an element's font size to the that set in
@@ -217,8 +257,8 @@ accordingly.
   font-size: 3.8333333333rem;
   line-height: 5rem;
   /* ---
-section: u-type
-title: gamma
+section: Type Utils
+title: Font Size gamma
 order: 4
 ---
 A util to modify an element's font size to the that set in
@@ -252,8 +292,8 @@ accordingly.
   font-size: 4.3333333333rem;
   line-height: 5rem;
   /* ---
-section: u-type
-title: beta
+section: Type Utils
+title: Font Size beta
 order: 5
 ---
 A util to modify an element's font size to the that set in
@@ -287,8 +327,8 @@ accordingly.
   font-size: 4.8333333333rem;
   line-height: 6rem;
   /* ---
-section: u-type
-title: alpha
+section: Type Utils
+title: Font Size alpha
 order: 6
 ---
 A util to modify an element's font size to the that set in
@@ -316,6 +356,188 @@ accordingly.
     font-size: 4.5714285714rem;
     line-height: 6rem;
   }
+}
+
+.u-fs--i {
+  font-style: italic;
+  /* ---
+section: Type Utils
+title: Font Style: italic
+order: 7
+---
+A util class for setting an element's font-style to italic
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-fs, $modifier: i[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-fs--i>
+  This element's font-style is set to <code>italic</code>.
+</p>
+```
+
+*/
+}
+
+.u-fs--o {
+  font-style: oblique;
+  /* ---
+section: Type Utils
+title: Font Style: oblique
+order: 8
+---
+A util class for setting an element's font-style to oblique
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-fs, $modifier: o[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-fs--o>
+  This element's font-style is set to <code>oblique</code>.
+</p>
+```
+
+*/
+}
+
+.u-fs--n {
+  font-style: normal;
+  /* ---
+section: Type Utils
+title: Font Style: normal
+order: 9
+---
+A util class for setting an element's font-style to normal
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-fs, $modifier: n[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-fs--n>
+  This element's font-style is set to <code>normal</code>.
+</p>
+```
+
+*/
+}
+
+.u-fw--400 {
+  font-style: 400;
+  /* ---
+section: Type Utils
+title: Font Weight: 400
+order: 10
+---
+A util class for setting an element's font-weight to 400
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-fw, $modifier: 400[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-fw--400>
+  This element's font-weight is set to <code>400</code>.
+</p>
+```
+
+*/
+}
+
+.u-fw--700 {
+  font-style: 700;
+  /* ---
+section: Type Utils
+title: Font Weight: 700
+order: 11
+---
+A util class for setting an element's font-weight to 700
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-fw, $modifier: 700[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-fw--700>
+  This element's font-weight is set to <code>700</code>.
+</p>
+```
+
+*/
+}
+
+.u-ff--serif {
+  font-family: georgia, "times new roman", serif;
+  /* ---
+section: Type Utils
+title: Font family: serif
+order: 12
+---
+A util class for setting an element's font-familly to the serif named stack
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ff, $modifier: serif[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-ff--serif>
+  This element's font-family is set to the <code>serif</code> stack.
+</p>
+```
+
+*/
+}
+
+.u-ff--sans-serif {
+  font-family: helvetica, arial, sans-serif;
+  /* ---
+section: Type Utils
+title: Font family: sans-serif
+order: 13
+---
+A util class for setting an element's font-familly to the sans-serif named stack
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-ff, $modifier: sans-serif[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-ff--sans-serif>
+  This element's font-family is set to the <code>sans-serif</code> stack.
+</p>
+```
+
+*/
 }
 
 html {

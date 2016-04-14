@@ -7,6 +7,19 @@ an element's font-size and line-height, based on sizes defined in the
 [$jigsass-sizes](https://txhawks.github.io/jigsass-tools-typography/#variable-jigsass-sizes)
 variable.
 
+Additionally, JigSass Type provides utility classes for setting an element's
+`font-weight`, `font-style` and `font-family` stacks through the 
+`$jigsass-font-stacks` variable.
+
+#### Available classes
+
+  - `u-type--<named-size>` (example: .u-type--alpha)
+  - `u-fw--<weight>` (example: .u-fw--700)
+  - `u-fs--i` (italic)
+  - `u-fs--n` (normal)
+  - `u-fs--o` (oblique)
+  - `u-ff--<stack>` (example: .u-ff--serif)
+
 
 ## Installation
 
@@ -16,13 +29,31 @@ Using npm:
 npm i -S jigsass-utils-type
 ```
 
+## Configuration
+Set named font stacks in `$jigsass-font-stacks`:
+
+```scss
+$jigsass-font-stacks: (
+  sans-serif: ('Helvetica Neue', Helvetica, Arial, sans-serif),
+  serif: (Georgia, Times, 'Times New Roman', serif)
+);
+```
+
+And then use them as font-family modfiers:
+
+```scss
+@include jigsass-util(u-ff, $modifier: serif);
+```
+
 ## Usage
+
 Import JigSass Utils Type into your main scss file near its very end, together with all
 other utilities (utilities should always be the last to be imported).
 
 ```scss
 @import 'path/to/jigsass-utils-type/scss/index';
 ```
+
 Like all other JigSass Utils, JigSass Type does not automatically generate any CSS
 when imported. You would need to explicitly indicate that each individual typesetting
 class should actually be generated in each component or object it is used in:
@@ -55,7 +86,7 @@ as anyone going through a partial, can easily understand how it should be marked
 glance.
 
 As far as bloat goes, just don't worry about it - the actual styles will only be generated once, 
-at the location in the cascade where the Jigsass Clearfix partial was imported into the main file.
+at the location in the cascade where the Jigsass Type partial was imported into the main file.
 
 
 

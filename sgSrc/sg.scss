@@ -46,12 +46,27 @@ $jigsass-sizes: map-merge(
   )
 );
 
+$jigsass-font-stacks: (
+  sans-serif: (helvetica, arial, sans-serif),
+  serif: (georgia, 'times new roman', serif)
+);
+
 @include jigsass-util(u-type, $modifier: zeta);
 @include jigsass-util(u-type, $modifier: epsilon);
 @include jigsass-util(u-type, $modifier: delta);
 @include jigsass-util(u-type, $modifier: gamma);
 @include jigsass-util(u-type, $modifier: beta);
 @include jigsass-util(u-type, $modifier: alpha);
+
+@include jigsass-util(u-fs, $modifier: i);
+@include jigsass-util(u-fs, $modifier: o);
+@include jigsass-util(u-fs, $modifier: n);
+
+@include jigsass-util(u-fw, $modifier: 400);
+@include jigsass-util(u-fw, $modifier: 700);
+
+@include jigsass-util(u-ff, $modifier: serif);
+@include jigsass-util(u-ff, $modifier: sans-serif);
 
 
 @import 'index.scss';

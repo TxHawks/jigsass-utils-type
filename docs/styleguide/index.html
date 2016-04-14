@@ -14,7 +14,7 @@
 	<ul>
 		
 				<li>
-					<a href="#u-type"><span>u-type</span></a>
+					<a href="#type-utils"><span>Type Utils</span></a>
 					
 	<ul>
 		
@@ -24,32 +24,72 @@
 				</li>
 				
 				<li>
-					<a href="#zeta"><span>zeta</span></a>
+					<a href="#configuration"><span>Configuration</span></a>
 					
 				</li>
 				
 				<li>
-					<a href="#epsilon"><span>epsilon</span></a>
+					<a href="#font-size-zeta"><span>Font Size zeta</span></a>
 					
 				</li>
 				
 				<li>
-					<a href="#delta"><span>delta</span></a>
+					<a href="#font-size-epsilon"><span>Font Size epsilon</span></a>
 					
 				</li>
 				
 				<li>
-					<a href="#gamma"><span>gamma</span></a>
+					<a href="#font-size-delta"><span>Font Size delta</span></a>
 					
 				</li>
 				
 				<li>
-					<a href="#beta"><span>beta</span></a>
+					<a href="#font-size-gamma"><span>Font Size gamma</span></a>
 					
 				</li>
 				
 				<li>
-					<a href="#alpha"><span>alpha</span></a>
+					<a href="#font-size-beta"><span>Font Size beta</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-size-alpha"><span>Font Size alpha</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-style-italic"><span>Font Style: italic</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-style-oblique"><span>Font Style: oblique</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-style-normal"><span>Font Style: normal</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-weight-400"><span>Font Weight: 400</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-weight-700"><span>Font Weight: 700</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-family-serif"><span>Font family: serif</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#font-family-sans-serif"><span>Font family: sans-serif</span></a>
 					
 				</li>
 				
@@ -64,8 +104,8 @@
 
 <main>
 	
-		<section id="u-type">
-			<h2>u-type</h2>
+		<section id="type-utils">
+			<h2>Type Utils</h2>
 			<div>
 				
 				
@@ -78,6 +118,18 @@
 an element&#39;s font-size and line-height, based on sizes defined in the
 <a href="https://txhawks.github.io/jigsass-tools-typography/#variable-jigsass-sizes">$jigsass-sizes</a>
 variable.</p>
+<p>Additionally, JigSass Type provides utility classes for setting an element&#39;s
+<code>font-weight</code>, <code>font-style</code> and <code>font-family</code> stacks through the
+<code>$jigsass-font-stacks</code> variable.</p>
+<h4 id="available-classes">Available classes</h4>
+<ul>
+<li><code>u-type--&lt;named-size&gt;</code> (example: .u-type--alpha)</li>
+<li><code>u-fw--&lt;weight&gt;</code> (example: .u-fw--700)</li>
+<li><code>u-fs--i</code> (italic)</li>
+<li><code>u-fs--n</code> (normal)</li>
+<li><code>u-fs--o</code> (oblique)</li>
+<li><code>u-ff--&lt;stack&gt;</code> (example: .u-ff--serif)</li>
+</ul>
 <h4 id="installation">Installation</h4>
 <p>Using npm:</p>
 <pre><code class="lang-sh">npm i -S jigsass-utils-type
@@ -112,7 +164,7 @@ management.</p>
 as anyone going through a partial, can easily understand how it should be marked up with just a
 glance.</p>
 <p>As far as bloat goes, just don&#39;t worry about it - the actual styles will only be generated once,
-at the location in the cascade where the Jigsass Clearfix partial was imported into the main file.</p>
+at the location in the cascade where the Jigsass Type partial was imported into the main file.</p>
 <p>JigSass Type classes are responsive-enabled, using <a href="https://txhawks.github.io/jigsass-tools-mq/">JigSass MQ</a>
 and the breakpoints defined in the <a href="https://txhawks.github.io/jigsass-tools-mq/#variable-jigsass-breakpoints">$jigsass-breakpoints</a> variable.</p>
 <p>Based on the breakpoint arguments passed to <code>jigsass-util</code> when including a type class, responsive
@@ -139,8 +191,27 @@ class under these  conditions.</p>
 			</div>
 		</section>
 		
-		<section id="zeta">
-			<h3>zeta</h3>
+		<section id="configuration">
+			<h3>Configuration</h3>
+			<div>
+				<p>JigSass Utils Type can be tweaked by setting the values of the following
+configuration variables. To override the default values, set your own
+<em>before</em> importing JigSass Utils Type.</p>
+<h4 id="font-family-stacks">Font family stacks</h4>
+<pre><code class="lang-scss">$jigsass-font-stacks
+</code></pre>
+<p><strong>Type:</strong> <code>Map</code></p>
+<p>A map holding named lists of font-family stacks for use as font-family modfiers:</p>
+<pre><code class="lang-scss">@include jigsass-util(u-ff, $modifier: serif);
+</code></pre>
+<p><strong>Default:</strong> <code>()</code></p>
+
+				
+			</div>
+		</section>
+		
+		<section id="font-size-zeta">
+			<h3>Font Size zeta</h3>
 			<div>
 				<p>A util to modify an element&#39;s font size to the that set in
 <code>$jigsass-sizes.zeta</code> and adjust its line-height
@@ -158,8 +229,8 @@ accordingly.</p>
 			</div>
 		</section>
 		
-		<section id="epsilon">
-			<h3>epsilon</h3>
+		<section id="font-size-epsilon">
+			<h3>Font Size epsilon</h3>
 			<div>
 				<p>A util to modify an element&#39;s font size to the that set in
 <code>$jigsass-sizes.epsilon</code> and adjust its line-height
@@ -177,8 +248,8 @@ accordingly.</p>
 			</div>
 		</section>
 		
-		<section id="delta">
-			<h3>delta</h3>
+		<section id="font-size-delta">
+			<h3>Font Size delta</h3>
 			<div>
 				<p>A util to modify an element&#39;s font size to the that set in
 <code>$jigsass-sizes.delta</code> and adjust its line-height
@@ -196,8 +267,8 @@ accordingly.</p>
 			</div>
 		</section>
 		
-		<section id="gamma">
-			<h3>gamma</h3>
+		<section id="font-size-gamma">
+			<h3>Font Size gamma</h3>
 			<div>
 				<p>A util to modify an element&#39;s font size to the that set in
 <code>$jigsass-sizes.gamma</code> and adjust its line-height
@@ -215,8 +286,8 @@ accordingly.</p>
 			</div>
 		</section>
 		
-		<section id="beta">
-			<h3>beta</h3>
+		<section id="font-size-beta">
+			<h3>Font Size beta</h3>
 			<div>
 				<p>A util to modify an element&#39;s font size to the that set in
 <code>$jigsass-sizes.beta</code> and adjust its line-height
@@ -234,8 +305,8 @@ accordingly.</p>
 			</div>
 		</section>
 		
-		<section id="alpha">
-			<h3>alpha</h3>
+		<section id="font-size-alpha">
+			<h3>Font Size alpha</h3>
 			<div>
 				<p>A util to modify an element&#39;s font size to the that set in
 <code>$jigsass-sizes.alpha</code> and adjust its line-height
@@ -253,10 +324,129 @@ accordingly.</p>
 			</div>
 		</section>
 		
+		<section id="font-style-italic">
+			<h3>Font Style: italic</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-style to italic</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-fs, $modifier: i[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-fs--i&gt;
+  This element&#39;s font-style is set to &lt;code&gt;italic&lt;/code&gt;.
+&lt;/p&gt;
+</code></pre>
+
+				
 			</div>
 		</section>
 		
-	<footer>Last modified Saturday, 9 April 2016 0:18</footer>
+		<section id="font-style-oblique">
+			<h3>Font Style: oblique</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-style to oblique</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-fs, $modifier: o[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-fs--o&gt;
+  This element&#39;s font-style is set to &lt;code&gt;oblique&lt;/code&gt;.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="font-style-normal">
+			<h3>Font Style: normal</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-style to normal</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-fs, $modifier: n[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-fs--n&gt;
+  This element&#39;s font-style is set to &lt;code&gt;normal&lt;/code&gt;.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="font-weight-400">
+			<h3>Font Weight: 400</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-weight to 400</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-fw, $modifier: 400[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-fw--400&gt;
+  This element&#39;s font-weight is set to &lt;code&gt;400&lt;/code&gt;.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="font-weight-700">
+			<h3>Font Weight: 700</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-weight to 700</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-fw, $modifier: 700[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-fw--700&gt;
+  This element&#39;s font-weight is set to &lt;code&gt;700&lt;/code&gt;.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="font-family-serif">
+			<h3>Font family: serif</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-familly to the serif named stack</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ff, $modifier: serif[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-ff--serif&gt;
+  This element&#39;s font-family is set to the &lt;code&gt;serif&lt;/code&gt; stack.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="font-family-sans-serif">
+			<h3>Font family: sans-serif</h3>
+			<div>
+				<p>A util class for setting an element&#39;s font-familly to the sans-serif named stack</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-ff, $modifier: sans-serif[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-ff--sans-serif&gt;
+  This element&#39;s font-family is set to the &lt;code&gt;sans-serif&lt;/code&gt; stack.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+	<footer>Last modified Friday, 15 April 2016 0:00</footer>
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>
