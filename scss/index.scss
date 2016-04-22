@@ -17,7 +17,7 @@
 
 @if (not mixin-exists(jigsass-define-util)) {
   @error '`jigsass-utils-type` has a dependency on `jigsass-tools-selectors`. ' +
-    'Please import it before importing this file.'
+    'Please import it before importing this file.';
 }
 
 
@@ -227,7 +227,7 @@ $_jigsass-util-type-i: 1;
       not function-exists(jigsass-merge-sizes)
     ) {
       @error '`jigsass-utils-type` has a dependency on `jigsass-tools-typography`. ' +
-        'Please import it before importing this file.'
+        'Please import it before importing this file.';
     }
 
     $_from: map-get($jigsass-util-mq-args, from);
