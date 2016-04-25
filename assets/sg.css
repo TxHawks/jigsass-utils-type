@@ -437,7 +437,7 @@ A util class for setting an element's font-style to normal
 }
 
 .u-fw--400 {
-  font-style: 400;
+  font-weight: 400;
   /* ---
 section: Type Utils
 title: Font Weight: 400
@@ -463,7 +463,7 @@ A util class for setting an element's font-weight to 400
 }
 
 .u-fw--700 {
-  font-style: 700;
+  font-weight: 700;
   /* ---
 section: Type Utils
 title: Font Weight: 700
