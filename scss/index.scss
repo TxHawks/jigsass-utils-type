@@ -353,7 +353,7 @@ A util class for setting an element's font-style to #{map-get($_jigsass-fs-val, 
     @error '#{$jigsass-util-name} must be passed a font-weight modifier.';
   }
 
-  font-style: $jigsass-util-modifier;
+  font-weight: $jigsass-util-modifier;
 
   $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
   @if (not index($_doclet-store, $_doclet)) {
