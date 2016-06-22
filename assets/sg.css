@@ -438,7 +438,6 @@ A util class for setting an element's font-style to normal
 
 .u-fw--400 {
   font-weight: 400;
-  test: best;
   /* ---
 section: Type Utils
 title: Font Weight: 400
@@ -465,7 +464,6 @@ A util class for setting an element's font-weight to 400
 
 .u-fw--700 {
   font-weight: 700;
-  test: best;
   /* ---
 section: Type Utils
 title: Font Weight: 700
@@ -492,7 +490,6 @@ A util class for setting an element's font-weight to 700
 
 .u-fw--700\:hover:hover {
   font-weight: 700;
-  test: best;
   /* ---
 section: Type Utils
 title: Font Weight: 700:hover
