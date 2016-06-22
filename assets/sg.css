@@ -438,6 +438,7 @@ A util class for setting an element's font-style to normal
 
 .u-fw--400 {
   font-weight: 400;
+  test: best;
   /* ---
 section: Type Utils
 title: Font Weight: 400
@@ -464,6 +465,7 @@ A util class for setting an element's font-weight to 400
 
 .u-fw--700 {
   font-weight: 700;
+  test: best;
   /* ---
 section: Type Utils
 title: Font Weight: 700
@@ -488,12 +490,39 @@ A util class for setting an element's font-weight to 700
 */
 }
 
+.u-fw--700\:hover:hover {
+  font-weight: 700;
+  test: best;
+  /* ---
+section: Type Utils
+title: Font Weight: 700:hover
+order: 12
+---
+A util class for setting an element's font-weight to 700:hover
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-fw, $modifier: 700:hover[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-fw--700:hover>
+  This element's font-weight is set to <code>700:hover</code>.
+</p>
+```
+
+*/
+}
+
 .u-ff--serif {
   font-family: georgia, "times new roman", serif;
   /* ---
 section: Type Utils
 title: Font family: serif
-order: 12
+order: 13
 ---
 A util class for setting an element's font-familly to the serif named stack
 
@@ -519,7 +548,7 @@ A util class for setting an element's font-familly to the serif named stack
   /* ---
 section: Type Utils
 title: Font family: sans-serif
-order: 13
+order: 14
 ---
 A util class for setting an element's font-familly to the sans-serif named stack
 
