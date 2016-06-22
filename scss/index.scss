@@ -353,12 +353,32 @@ A util class for setting an element's font-style to #{map-get($_jigsass-fs-val, 
     @error '#{$jigsass-util-name} must be passed a font-weight modifier.';
   }
 
-  font-weight: $jigsass-util-modifier;
+  $modifier: $jigsass-util-modifier;
+  $parsed-mod-values: jigsass-parse-modifier($modifier);
+  $state: '';
 
-  $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
-  @if (not index($_doclet-store, $_doclet)) {
-    $_doclet-store: append($_doclet-store, $_doclet) !global;
-    // stylelint-disable
+  @if (type-of($modifier) == string) {
+    $modifier: jigsass-str-to-number(map-get($parsed-mod-values, modifier));
+    $state: map-get($parsed-mod-values, state) or '';
+  }
+
+  @if (type-of($modifier) != number and not unitless($modifier)) {
+    @error '#{$jigsass-util-name}: A font-weight modifier must be a unitless number,' +
+      'but you are trying to use #{$modifier}.';
+  }
+
+  &#{$state} {
+    @debug &;
+    @debug $state;
+    @debug $modifier;
+    font-weight: $modifier;
+    test: best;
+
+
+    $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+    @if (not index($_doclet-store, $_doclet)) {
+      $_doclet-store: append($_doclet-store, $_doclet) !global;
+      // stylelint-disable
 
 /* ---
 section: Type Utils
@@ -382,8 +402,9 @@ A util class for setting an element's font-weight to #{$jigsass-util-modifier}
 ```
 
 */
-    // stylelint-enable
-    $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+      // stylelint-enable
+      $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+    }
   }
 }
 

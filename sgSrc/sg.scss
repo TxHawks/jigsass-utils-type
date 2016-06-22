@@ -64,6 +64,7 @@ $jigsass-font-stacks: (
 
 @include jigsass-util(u-fw, $modifier: 400);
 @include jigsass-util(u-fw, $modifier: 700);
+@include jigsass-util(u-fw, $modifier: '700:hover');
 
 @include jigsass-util(u-ff, $modifier: serif);
 @include jigsass-util(u-ff, $modifier: sans-serif);
