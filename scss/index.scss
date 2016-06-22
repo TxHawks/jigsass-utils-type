@@ -368,11 +368,7 @@ A util class for setting an element's font-style to #{map-get($_jigsass-fs-val, 
   }
 
   &#{$state} {
-    @debug &;
-    @debug $state;
-    @debug $modifier;
     font-weight: $modifier;
-    test: best;
 
 
     $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
