@@ -199,7 +199,10 @@ $jigsass-font-stacks: () !default;
 
 
 // Used internally for generating font-style classes.
-$_jigsass-fs-val: ( i: italic, n: normal, o: oblique);
+$_jigsass-fs-val: (i: italic, n: normal, o: oblique);
+
+// Used internally for generating text-decoration classes.
+$_jigsass-td-val: (n: none, u: underline, o: overline, l: line-through);
 
 // Used internally to store doclets
 $_doclet-store: () !default;
@@ -447,5 +450,69 @@ A util class for setting an element's font-familly to the #{$jigsass-util-modifi
 */
     // stylelint-enable
     $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+  }
+}
+
+
+@include jigsass-define-util(u-td) {
+  @if (not $jigsass-util-modifier) {
+    @error '#{$jigsass-util-name} must be passed a text decoration modifier.';
+  }
+
+  $parsed-mod-values: jigsass-parse-modifier($jigsass-util-modifier);
+  $modifier: map-get($parsed-mod-values, modifier);
+  $state: map-get($parsed-mod-values, state) or '';
+
+  @if (not index(n u o l, $modifier)) {
+    @error '#{$jigsass-util-name} modifiers may only be `n` for none, `u` for underline, ' +
+      '`o` for overlinea or `l` for line-through. ' +
+      'You are trying to pass #{$modifier}.';
+  }
+
+  &#{$state} {
+    text-decoration: map-get($_jigsass-td-val, $modifier);
+
+
+    $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+    @if (not index($_doclet-store, $_doclet)) {
+      $_doclet-store: append($_doclet-store, $_doclet) !global;
+      // stylelint-disable
+
+/* ---
+section: Type Utils
+title: Text Decoration: #{map-get($_jigsass-td-val, $modifier)$state}
+order: #{$_jigsass-util-type-i}
+---
+A util class for setting an element's text decoration to `#{map-get($_jigsass-td-val, $modifier)}`
+#{if(
+  $state != '',
+  ' on `' + $state + '`',
+  ''
+)}
+
+#### Include with:
+
+```scss
+@include jigsass-util(#{$jigsass-util-name}, $modifier: #{$jigsass-util-modifier}[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=#{$jigsass-util-name}--#{$jigsass-util-modifier}>
+  This element's font-style is set to
+  <code>#{map-get($_jigsass-td-val, $modifier)}</code>
+#{if(
+  $state != '',
+  ' on <code>' + $state + '</code>',
+  ''
+)}.
+</p>
+```
+
+*/
+      // stylelint-enable
+      $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+    }
   }
 }

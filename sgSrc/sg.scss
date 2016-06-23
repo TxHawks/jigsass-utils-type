@@ -69,6 +69,10 @@ $jigsass-font-stacks: (
 @include jigsass-util(u-ff, $modifier: serif);
 @include jigsass-util(u-ff, $modifier: sans-serif);
 
+@include jigsass-util(u-td, $modifier: 'u');
+@include jigsass-util(u-td, $modifier: 'l');
+@include jigsass-util(u-td, $modifier: 'l:hover');
+
 
 @import 'index.scss';
 

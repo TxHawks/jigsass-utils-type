@@ -566,6 +566,93 @@ A util class for setting an element's font-familly to the sans-serif named stack
 */
 }
 
+.u-td--u {
+  text-decoration: underline;
+  /* ---
+section: Type Utils
+title: Text Decoration: underline 
+order: 15
+---
+A util class for setting an element's text decoration to `underline`
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: u[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-td--u>
+  This element's font-style is set to
+  <code>underline</code>
+.
+</p>
+```
+
+*/
+}
+
+.u-td--l {
+  text-decoration: line-through;
+  /* ---
+section: Type Utils
+title: Text Decoration: line-through 
+order: 16
+---
+A util class for setting an element's text decoration to `line-through`
+
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: l[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-td--l>
+  This element's font-style is set to
+  <code>line-through</code>
+.
+</p>
+```
+
+*/
+}
+
+.u-td--l\:hover:hover {
+  text-decoration: line-through;
+  /* ---
+section: Type Utils
+title: Text Decoration: line-through :hover
+order: 17
+---
+A util class for setting an element's text decoration to `line-through`
+ on `:hover`
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-td, $modifier: l:hover[, $from, $until, $misc]);
+```
+
+#### example
+
+```example:html
+<p class=u-td--l:hover>
+  This element's font-style is set to
+  <code>line-through</code>
+ on <code>:hover</code>.
+</p>
+```
+
+*/
+}
+
 html {
   font-size: 37.5%;
 }
