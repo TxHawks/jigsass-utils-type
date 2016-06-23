@@ -98,6 +98,21 @@
 					
 				</li>
 				
+				<li>
+					<a href="#text-decoration-underline"><span>Text Decoration: underline</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-line-through"><span>Text Decoration: line-through</span></a>
+					
+				</li>
+				
+				<li>
+					<a href="#text-decoration-line-through-hover"><span>Text Decoration: line-through :hover</span></a>
+					
+				</li>
+				
 	</ul>
 	
 				</li>
@@ -465,10 +480,68 @@ accordingly.</p>
 			</div>
 		</section>
 		
+		<section id="text-decoration-underline">
+			<h3>Text Decoration: underline</h3>
+			<div>
+				<p>A util class for setting an element&#39;s text decoration to <code>underline</code></p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: u[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-td--u&gt;
+  This element&#39;s font-style is set to
+  &lt;code&gt;underline&lt;/code&gt;
+.
+&lt;/p&gt;
+</code></pre>
+
+				
 			</div>
 		</section>
 		
-	<footer>Last modified Wednesday, 22 June 2016 17:56</footer>
+		<section id="text-decoration-line-through">
+			<h3>Text Decoration: line-through</h3>
+			<div>
+				<p>A util class for setting an element&#39;s text decoration to <code>line-through</code></p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: l[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-td--l&gt;
+  This element&#39;s font-style is set to
+  &lt;code&gt;line-through&lt;/code&gt;
+.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+		<section id="text-decoration-line-through-hover">
+			<h3>Text Decoration: line-through :hover</h3>
+			<div>
+				<p>A util class for setting an element&#39;s text decoration to <code>line-through</code>
+ on <code>:hover</code></p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-td, $modifier: l:hover[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">example</h4>
+<pre><code class="lang-example:html">&lt;p class=u-td--l:hover&gt;
+  This element&#39;s font-style is set to
+  &lt;code&gt;line-through&lt;/code&gt;
+ on &lt;code&gt;:hover&lt;/code&gt;.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
+			</div>
+		</section>
+		
+	<footer>Last modified Thursday, 23 June 2016 11:23</footer>
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>
