@@ -219,10 +219,14 @@ $_jigsass-util-type-i: 1;
 // -------------------------------------
 
 @include jigsass-define-util(u-type) {
+  $parsed-mod-values: jigsass-parse-modifier($jigsass-util-modifier);
+  $modifier: map-get($parsed-mod-values, modifier);
+  $state: map-get($parsed-mod-values, state) or '';
+
   @if (
     index(
       map-keys(jigsass-merge-sizes()),
-      $jigsass-util-modifier
+      $modifier
     )
   ) {
     @if (
@@ -238,47 +242,48 @@ $_jigsass-util-type-i: 1;
     $_misc: map-get($jigsass-util-mq-args, misc);
 
     $_rhythm-bps: map-get(jigsass-merge-sizes(), rhythm-unit);
-    $_size-bps: map-get(jigsass-merge-sizes(), $jigsass-util-modifier) or ();
+    $_size-bps: map-get(jigsass-merge-sizes(), $modifier) or ();
 
     $_bps: map-keys(map-merge($_rhythm-bps, $_size-bps));
     $_bps: if($_from and not index($_bps, $_from), append($_bps, $_from), $_bps);
 
     $_bps-order: map-keys(jigsass-mq-sort-length-breakpoints());
 
-    @each $bp in $_bps {
-      @if (not $_from or index($_bps-order, $_from) <= index($_bps-order, $bp)) {
-        @if (not $_until or index($_bps-order, $_until) > index($_bps-order, $bp)) {
-          @if ($_from == $bp) {
-            @include jigsass-font-size(
-              $size: $jigsass-util-modifier,
-              $unit: rem
-            );
-          }
-          @else {
-            @at-root (without: media) {
-              @include jigsass-mq($from: $bp, $until: $_until, $misc: $_misc) {
-                @include jigsass-font-size(
-                  $size: $jigsass-util-modifier,
-                  $unit: rem
-                );
+    &#{$state} {
+      @each $bp in $_bps {
+        @if (not $_from or index($_bps-order, $_from) <= index($_bps-order, $bp)) {
+          @if (not $_until or index($_bps-order, $_until) > index($_bps-order, $bp)) {
+            @if ($_from == $bp) {
+              @include jigsass-font-size(
+                $size: $modifier,
+                $unit: rem
+              );
+            }
+            @else {
+              @at-root (without: media) {
+                @include jigsass-mq($from: $bp, $until: $_until, $misc: $_misc) {
+                  @include jigsass-font-size(
+                    $size: $modifier,
+                    $unit: rem
+                  );
+                }
               }
             }
           }
         }
       }
-    }
 
-    $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
-    @if (not index($_doclet-store, $_doclet)) {
-      $_doclet-store: append($_doclet-store, $_doclet) !global;
-      // stylelint-disable
+      $_doclet: $jigsass-util-name + ($jigsass-util-modifier or '');
+      @if (not index($_doclet-store, $_doclet)) {
+        $_doclet-store: append($_doclet-store, $_doclet) !global;
+        // stylelint-disable
 /* ---
 section: Type Utils
 title: Font Size #{$jigsass-util-modifier}
 order: #{$_jigsass-util-type-i}
 ---
 A util to modify an element's font size to the that set in
-`$jigsass-sizes.#{$jigsass-util-modifier}` and adjust its line-height
+`$jigsass-sizes.#{$modifier}` and adjust its line-height
 accordingly.
 
 #### Include with:
@@ -295,8 +300,9 @@ accordingly.
 </p>
 ```
 */
-      $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
-      // stylelint-enable
+        $_jigsass-util-type-i: $_jigsass-util-type-i + 1 !global;
+        // stylelint-enable
+      }
     }
   }
   @else {

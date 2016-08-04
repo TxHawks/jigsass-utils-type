@@ -57,6 +57,7 @@ $jigsass-font-stacks: (
 @include jigsass-util(u-type, $modifier: gamma);
 @include jigsass-util(u-type, $modifier: beta);
 @include jigsass-util(u-type, $modifier: alpha);
+@include jigsass-util(u-type, $modifier: 'alpha:hover');
 
 @include jigsass-util(u-fs, $modifier: i);
 @include jigsass-util(u-fs, $modifier: o);

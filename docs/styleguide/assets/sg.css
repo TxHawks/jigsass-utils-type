@@ -358,12 +358,47 @@ accordingly.
   }
 }
 
+.u-type--alpha\:hover:hover {
+  font-size: 4.8333333333rem;
+  line-height: 6rem;
+  /* ---
+section: Type Utils
+title: Font Size alpha:hover
+order: 7
+---
+A util to modify an element's font size to the that set in
+`$jigsass-sizes.alpha` and adjust its line-height
+accordingly.
+
+#### Include with:
+
+```scss
+@include jigsass-util(u-type, $modifier: alpha:hover[, $from, $until, $misc]);
+```
+
+#### Example
+
+```example:html
+<p class='u-type--alpha:hover'>
+  This is <em>alpha:hover</em> sized text.
+</p>
+```
+*/
+}
+
+@media (min-width: 64em) {
+  .u-type--alpha\:hover:hover {
+    font-size: 4.5714285714rem;
+    line-height: 6rem;
+  }
+}
+
 .u-fs--i {
   font-style: italic;
   /* ---
 section: Type Utils
 title: Font Style: italic
-order: 7
+order: 8
 ---
 A util class for setting an element's font-style to italic
 
@@ -389,7 +424,7 @@ A util class for setting an element's font-style to italic
   /* ---
 section: Type Utils
 title: Font Style: oblique
-order: 8
+order: 9
 ---
 A util class for setting an element's font-style to oblique
 
@@ -415,7 +450,7 @@ A util class for setting an element's font-style to oblique
   /* ---
 section: Type Utils
 title: Font Style: normal
-order: 9
+order: 10
 ---
 A util class for setting an element's font-style to normal
 
@@ -441,7 +476,7 @@ A util class for setting an element's font-style to normal
   /* ---
 section: Type Utils
 title: Font Weight: 400
-order: 10
+order: 11
 ---
 A util class for setting an element's font-weight to 400
 
@@ -467,7 +502,7 @@ A util class for setting an element's font-weight to 400
   /* ---
 section: Type Utils
 title: Font Weight: 700
-order: 11
+order: 12
 ---
 A util class for setting an element's font-weight to 700
 
@@ -493,7 +528,7 @@ A util class for setting an element's font-weight to 700
   /* ---
 section: Type Utils
 title: Font Weight: 700:hover
-order: 12
+order: 13
 ---
 A util class for setting an element's font-weight to 700:hover
 
@@ -519,7 +554,7 @@ A util class for setting an element's font-weight to 700:hover
   /* ---
 section: Type Utils
 title: Font family: serif
-order: 13
+order: 14
 ---
 A util class for setting an element's font-familly to the serif named stack
 
@@ -545,7 +580,7 @@ A util class for setting an element's font-familly to the serif named stack
   /* ---
 section: Type Utils
 title: Font family: sans-serif
-order: 14
+order: 15
 ---
 A util class for setting an element's font-familly to the sans-serif named stack
 
@@ -571,7 +606,7 @@ A util class for setting an element's font-familly to the sans-serif named stack
   /* ---
 section: Type Utils
 title: Text Decoration: underline 
-order: 15
+order: 16
 ---
 A util class for setting an element's text decoration to `underline`
 
@@ -600,7 +635,7 @@ A util class for setting an element's text decoration to `underline`
   /* ---
 section: Type Utils
 title: Text Decoration: line-through 
-order: 16
+order: 17
 ---
 A util class for setting an element's text decoration to `line-through`
 
@@ -629,7 +664,7 @@ A util class for setting an element's text decoration to `line-through`
   /* ---
 section: Type Utils
 title: Text Decoration: line-through :hover
-order: 17
+order: 18
 ---
 A util class for setting an element's text decoration to `line-through`
  on `:hover`

@@ -59,6 +59,11 @@
 				</li>
 				
 				<li>
+					<a href="#font-size-alphahover"><span>Font Size alpha:hover</span></a>
+					
+				</li>
+				
+				<li>
 					<a href="#font-style-italic"><span>Font Style: italic</span></a>
 					
 				</li>
@@ -344,6 +349,25 @@ accordingly.</p>
 			</div>
 		</section>
 		
+		<section id="font-size-alphahover">
+			<h3>Font Size alpha:hover</h3>
+			<div>
+				<p>A util to modify an element&#39;s font size to the that set in
+<code>$jigsass-sizes.alpha</code> and adjust its line-height
+accordingly.</p>
+<h4 id="include-with-">Include with:</h4>
+<pre><code class="lang-scss">@include jigsass-util(u-type, $modifier: alpha:hover[, $from, $until, $misc]);
+</code></pre>
+<h4 id="example">Example</h4>
+<pre><code class="lang-example:html">&lt;p class=&#39;u-type--alpha:hover&#39;&gt;
+  This is &lt;em&gt;alpha:hover&lt;/em&gt; sized text.
+&lt;/p&gt;
+</code></pre>
+
+				
+			</div>
+		</section>
+		
 		<section id="font-style-italic">
 			<h3>Font Style: italic</h3>
 			<div>
@@ -541,7 +565,7 @@ accordingly.</p>
 			</div>
 		</section>
 		
-	<footer>Last modified Thursday, 23 June 2016 11:23</footer>
+	<footer>Last modified Thursday, 4 August 2016 21:39</footer>
 </main>
 <script src="prism.js"></script>
 <script src="examples.js"></script>
