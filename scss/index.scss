@@ -262,10 +262,12 @@ $_jigsass-util-type-i: 1;
             @else {
               @at-root (without: media) {
                 @include jigsass-mq($from: $bp, $until: $_until, $misc: $_misc) {
-                  @include jigsass-font-size(
-                    $size: $modifier,
-                    $unit: rem
-                  );
+                  & {
+                    @include jigsass-font-size(
+                      $size: $modifier,
+                      $unit: rem
+                    );
+                  }
                 }
               }
             }

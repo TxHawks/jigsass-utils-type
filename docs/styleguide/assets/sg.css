@@ -149,8 +149,6 @@ A map holding named lists of font-family stacks for use as font-family modfiers:
 **Default:** `()`
 */
 .u-type--zeta {
-  font-size: 2.6666666667rem;
-  line-height: 4rem;
   /* ---
 section: Type Utils
 title: Font Size zeta
@@ -176,6 +174,11 @@ accordingly.
 */
 }
 
+.u-type--zeta {
+  font-size: 2.6666666667rem;
+  line-height: 4rem;
+}
+
 @media (min-width: 64em) {
   .u-type--zeta {
     font-size: 2.5714285714rem;
@@ -184,8 +187,6 @@ accordingly.
 }
 
 .u-type--epsilon {
-  font-size: 3rem;
-  line-height: 4rem;
   /* ---
 section: Type Utils
 title: Font Size epsilon
@@ -211,6 +212,11 @@ accordingly.
 */
 }
 
+.u-type--epsilon {
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
 @media (min-width: 64em) {
   .u-type--epsilon {
     font-size: 2.8571428571rem;
@@ -219,8 +225,6 @@ accordingly.
 }
 
 .u-type--delta {
-  font-size: 3.3333333333rem;
-  line-height: 4rem;
   /* ---
 section: Type Utils
 title: Font Size delta
@@ -246,6 +250,11 @@ accordingly.
 */
 }
 
+.u-type--delta {
+  font-size: 3.3333333333rem;
+  line-height: 4rem;
+}
+
 @media (min-width: 64em) {
   .u-type--delta {
     font-size: 3.2857142857rem;
@@ -254,8 +263,6 @@ accordingly.
 }
 
 .u-type--gamma {
-  font-size: 3.8333333333rem;
-  line-height: 5rem;
   /* ---
 section: Type Utils
 title: Font Size gamma
@@ -281,6 +288,11 @@ accordingly.
 */
 }
 
+.u-type--gamma {
+  font-size: 3.8333333333rem;
+  line-height: 5rem;
+}
+
 @media (min-width: 64em) {
   .u-type--gamma {
     font-size: 3.7142857143rem;
@@ -289,8 +301,6 @@ accordingly.
 }
 
 .u-type--beta {
-  font-size: 4.3333333333rem;
-  line-height: 5rem;
   /* ---
 section: Type Utils
 title: Font Size beta
@@ -316,6 +326,11 @@ accordingly.
 */
 }
 
+.u-type--beta {
+  font-size: 4.3333333333rem;
+  line-height: 5rem;
+}
+
 @media (min-width: 64em) {
   .u-type--beta {
     font-size: 4.1428571429rem;
@@ -324,8 +339,6 @@ accordingly.
 }
 
 .u-type--alpha {
-  font-size: 4.8333333333rem;
-  line-height: 6rem;
   /* ---
 section: Type Utils
 title: Font Size alpha
@@ -351,6 +364,11 @@ accordingly.
 */
 }
 
+.u-type--alpha {
+  font-size: 4.8333333333rem;
+  line-height: 6rem;
+}
+
 @media (min-width: 64em) {
   .u-type--alpha {
     font-size: 4.5714285714rem;
@@ -359,8 +377,6 @@ accordingly.
 }
 
 .u-type--alpha\:hover:hover {
-  font-size: 4.8333333333rem;
-  line-height: 6rem;
   /* ---
 section: Type Utils
 title: Font Size alpha:hover
@@ -384,6 +400,11 @@ accordingly.
 </p>
 ```
 */
+}
+
+.u-type--alpha\:hover:hover {
+  font-size: 4.8333333333rem;
+  line-height: 6rem;
 }
 
 @media (min-width: 64em) {
