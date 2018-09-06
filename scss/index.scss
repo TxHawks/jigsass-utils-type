@@ -261,12 +261,22 @@ $_jigsass-util-type-i: 1;
             }
             @else {
               @at-root (without: media) {
-                @include jigsass-mq($from: $bp, $until: $_until, $misc: $_misc) {
+                @if($bp == 'default' and (not $_until) and (not $_misc)) {
                   & {
                     @include jigsass-font-size(
                       $size: $modifier,
                       $unit: rem
                     );
+                  }
+                }
+                @else {
+                  @include jigsass-mq($from: if($bp == 'default', false, $bp), $until: $_until, $misc: $_misc) {
+                    & {
+                      @include jigsass-font-size(
+                        $size: $modifier,
+                        $unit: rem
+                      );
+                    }
                   }
                 }
               }
