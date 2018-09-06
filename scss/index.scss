@@ -270,7 +270,11 @@ $_jigsass-util-type-i: 1;
                   }
                 }
                 @else {
-                  @include jigsass-mq($from: if($bp == 'default', false, $bp), $until: $_until, $misc: $_misc) {
+                  @include jigsass-mq(
+                    $from: if($bp == 'default', false, $bp),
+                    $until: $_until,
+                    $misc: $_misc
+                  ) {
                     & {
                       @include jigsass-font-size(
                         $size: $modifier,

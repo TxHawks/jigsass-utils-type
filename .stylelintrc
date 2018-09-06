@@ -46,7 +46,7 @@
     "block-no-empty": true,
     "selector-combinator-space-after": "always",
     "selector-combinator-space-before": "always",
-    "selector-no-id": true,
+    "selector-max-id": 0,
     "selector-list-comma-newline-after": "always",
     "selector-list-comma-space-before": "never",
 
